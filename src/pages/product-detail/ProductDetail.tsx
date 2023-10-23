@@ -1,5 +1,7 @@
 import React from "react";
 import stantImg from "../../assets/Images/stan-smith.webp";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 function ProductDetail() {
   return (
     <>

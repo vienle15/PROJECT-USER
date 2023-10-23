@@ -10,6 +10,7 @@ function Header() {
   const userLogin = useSelector((state: { auth: AuthState }) => state.auth);
   const handleLogout = () => {
     dispatch(logout());
+    localStorage.removeItem("loggedIn");
     navigate("/signin");
   };
 
