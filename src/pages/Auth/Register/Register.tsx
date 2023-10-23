@@ -29,7 +29,7 @@ export default function Register() {
   };
   const navigate = useNavigate();
   const [email, setEmail] = React.useState("");
-  const [emailExists, setEmailExists] = React.useState(false);
+  // const [emailExists, setEmailExists] = React.useState(false);
   const checkEmail = async (email: string) => {
     try {
       const response = await axios.get("http://localhost:3000/users", {
@@ -37,10 +37,7 @@ export default function Register() {
       });
 
       // Check if there are any users with the same email
-      const existingUsers = response.data.filter(
-        (user: any) => user.email === email
-      );
-
+      const existingUsers = response.data;
       // If there are existing users with the same email, return true
       return existingUsers.length > 0;
     } catch (error) {
@@ -71,12 +68,12 @@ export default function Register() {
     const emailAlreadyExists = await checkEmail(emailValue);
 
     if (emailAlreadyExists) {
-      setEmailExists(true);
+      // setEmailExists(true);
       // Hiển thị thông báo rằng địa chỉ email đã tồn tại
       alert("email đã tồn tại.");
     } else {
       // Địa chỉ email chưa tồn tại, bạn có thể tiến hành đăng ký
-      setEmailExists(false);
+      // setEmailExists(false);
 
       // Gửi dữ liệu đăng ký lên máy chủ
 

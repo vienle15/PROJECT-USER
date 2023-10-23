@@ -20,6 +20,7 @@ import {
 } from "../../../redux/Slice/AuthSlice";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { userInfo } from "os";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -47,7 +48,10 @@ export default function SignIn() {
       if (response.data) {
         // Đăng nhập thành công
         dispatch(loginSuccess({ email, password }));
-        alert("Đăng nhập thành công");
+        // localStorage.setItem("userLogin", JSON.stringify());
+        console.log(111111, response.data[0].id);
+        localStorage.setItem("loggedIn", JSON.stringify(response.data[0].id));
+
         navigate("/");
       } else {
         // Đăng nhập thất bại

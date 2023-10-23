@@ -897,3 +897,98 @@ a.qty:hover {
 .boxed-btn:hover {
   background: #555;
 }
+/* Profile.css */
+.profile-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.profile-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  margin-right: 20px;
+}
+
+.profile-info,
+.profile-form {
+  text-align: left;
+}
+
+.profile-input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px;
+}
+
+.profile-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.profile-button:hover {
+  background-color: #0056b3;
+}
+/* Định dạng container chung */
+.container {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* Định dạng tiêu đề */
+.heading h1 {
+  color: #007bff; /* Màu chữ */
+  font-size: 24px; /* Kích thước chữ */
+  margin: 20px 0;
+}
+
+/* Định dạng nút "Pay" */
+.btn-update {
+  background-color: #007bff; /* Màu nền */
+  color: #fff; /* Màu chữ */
+  padding: 10px 20px; /* Độ lớn nút */
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 20px 0;
+}
+
+/* Định dạng cho bảng sản phẩm */
+.table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+/* Định dạng cho các ô trong bảng sản phẩm */
+.col {
+  padding: 10px;
+}
+
+/* Định dạng dòng tiêu đề bảng sản phẩm */
+.th {
+  font-weight: bold;
+  background-color: #f0f0f0; /* Màu nền của tiêu đề */
+}
+
+/* Định dạng cho nút "X" */
+.visibility-cart {
+  color: #007bff; /* Màu chữ */
+}
+
+/* Tạo hiệu ứng hover cho nút "Pay" */
+.btn-update:hover {
+  background-color: #0056b3; /* Màu nền khi hover */
+}
