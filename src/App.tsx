@@ -46,12 +46,4 @@ function App() {
   );
 }
 
-// function checkLogin() {
-//   const isLogged = localStorage.getItem("loggedIn");
-//   if (isLogged) {
-//     JSON.parse(isLogged);
-//     dispatch(loginSuccess({ userId }));
-//   }
-// }
-
 export default App;

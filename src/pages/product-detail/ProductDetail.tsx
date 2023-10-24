@@ -2,7 +2,21 @@ import React from "react";
 import stantImg from "../../assets/Images/stan-smith.webp";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { log } from "console";
 function ProductDetail() {
+  const [products, setProducts] = useState({});
+  const { id } = useParams<{ id: string }>();
+  useEffect(() => {
+    fetch("http://localhost:3000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "data");
+        //  find data by id
+        const product = data.find((product: any) => product?.id === id);
+        setProducts(product);
+      });
+  }, []);
+
   return (
     <>
       <main className="container">
@@ -12,51 +26,53 @@ function ProductDetail() {
               <div className="preview col-md-6">
                 <div className="preview-pic tab-content">
                   <div className="tab-pane active" id="pic-1">
-                    <img src={stantImg} alt="" />
+                    <img src={(products as { image: string })?.image} alt="" />
                   </div>
                   <div className="tab-pane" id="pic-2">
-                    <img src={stantImg} />
+                    <img src={(products as { image: string })?.image} />
                   </div>
                   <div className="tab-pane" id="pic-3">
-                    <img src={stantImg} />
+                    <img src={(products as { image: string })?.image} />
                   </div>
                   <div className="tab-pane" id="pic-4">
-                    <img src={stantImg} />
+                    <img src={(products as { image: string })?.image} />
                   </div>
                   <div className="tab-pane" id="pic-5">
-                    <img src={stantImg} />
+                    <img src={(products as { image: string })?.image} />
                   </div>
                 </div>
                 <ul className="preview-thumbnail nav nav-tabs">
                   <li className="active">
                     <a data-target="#pic-1" data-toggle="tab">
-                      <img src={stantImg} />
+                      <img src={(products as { image: string })?.image} />
                     </a>
                   </li>
                   <li>
                     <a data-target="#pic-2" data-toggle="tab">
-                      <img src={stantImg} />
+                      <img src={(products as { image: string })?.image} />
                     </a>
                   </li>
                   <li>
                     <a data-target="#pic-3" data-toggle="tab">
-                      <img src={stantImg} />
+                      <img src={(products as { image: string })?.image} />
                     </a>
                   </li>
                   <li>
                     <a data-target="#pic-4" data-toggle="tab">
-                      <img src={stantImg} />
+                      <img src={(products as { image: string })?.image} />
                     </a>
                   </li>
                   <li>
                     <a data-target="#pic-5" data-toggle="tab">
-                      <img src={stantImg} />
+                      <img src={(products as { image: string })?.image} />
                     </a>
                   </li>
                 </ul>
               </div>
               <div className="details col-md-6">
-                <h3 className="product-title">men's shoes fashion</h3>
+                <h3 className="product-title">
+                  {(products as { productName: string })?.productName}
+                </h3>
                 <div className="rating">
                   <div className="stars">
                     <span className="fa fa-star checked" />
@@ -73,7 +89,10 @@ function ProductDetail() {
                   sociosqu delectus posuere.
                 </p>
                 <h4 className="price">
-                  current price: <span>$180</span>
+                  current price:{" "}
+                  <span>
+                    {(products as { productPrice: string })?.productPrice}
+                  </span>
                 </h4>
                 <p className="vote">
                   <strong>91%</strong> of buyers enjoyed this product!
@@ -82,23 +101,23 @@ function ProductDetail() {
                 <h5 className="sizes">
                   sizes:
                   <span className="size" data-toggle="tooltip" title="small">
-                    7
+                    {(products as { productSize: string })?.productSize}
                   </span>
-                  <span className="size" data-toggle="tooltip" title="medium">
+                  {/* <span className="size" data-toggle="tooltip" title="medium">
                     8
                   </span>
                   <span className="size" data-toggle="tooltip" title="large">
                     9
-                  </span>
-                  <span
+                  </span> */}
+                  {/* <span
                     className="size"
                     data-toggle="tooltip"
                     title="xtra large"
                   >
                     10
-                  </span>
+                  </span> */}
                 </h5>
-                <h5 className="colors">
+                {/* <h5 className="colors">
                   colors:
                   <span
                     className="color orange not-available"
@@ -107,7 +126,7 @@ function ProductDetail() {
                   />
                   <span className="color green" />
                   <span className="color blue" />
-                </h5>
+                </h5> */}
                 <div className="action">
                   <button className="add-to-cart btn btn-default" type="button">
                     add to cart

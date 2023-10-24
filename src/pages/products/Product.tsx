@@ -67,7 +67,7 @@ function ProductList() {
                 <p className="card-text">Size: {product.productSize}</p>
 
                 <button
-                  onClick={() => navigate("/productdetail")}
+                  onClick={() => navigate(`/productdetail/${product.id}`)}
                   className="btn btn-primary"
                 >
                   Detail

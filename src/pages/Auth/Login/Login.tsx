@@ -49,7 +49,6 @@ export default function SignIn() {
         // Đăng nhập thành công
         dispatch(loginSuccess({ email, password }));
         // localStorage.setItem("userLogin", JSON.stringify());
-        console.log(111111, response.data[0].id);
 
         localStorage.setItem("loggedIn", JSON.stringify(response.data[0].id));
 

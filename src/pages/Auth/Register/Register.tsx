@@ -59,9 +59,19 @@ export default function Register() {
       const emailValue = email.value;
       const passwordValue = password.value;
       const repeatPasswordValue = repeatPassword.value;
+      const emailFormat = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      if (!emailFormat.test(emailValue)) {
+        alert("Vui lòng nhập một địa chỉ email hợp lệ.");
+        return; // Không thực hiện đăng ký nếu email không hợp lệ
+      }
 
-      // Tiếp tục xử lý dựa trên giá trị emailValue, passwordValue và repeatPasswordValue
-      // ...
+      // Kiểm tra mật khẩu có đủ dài (tối thiểu 6 ký tự) và khớp với xác nhận mật khẩu
+      if (passwordValue.length < 6 || passwordValue !== repeatPasswordValue) {
+        alert(
+          "Mật khẩu phải có ít nhất 6 ký tự và phải khớp với xác nhận mật khẩu."
+        );
+        return; // Không thực hiện đăng ký nếu mật khẩu không hợp lệ
+      }
     }
     const emailValue: string = email.value;
     const passwordValue: string = password.value;

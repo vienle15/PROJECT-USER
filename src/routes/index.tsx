@@ -31,7 +31,7 @@ export const routes: I_Routes[] = [
   { title: "Product", path: "/product", element: <Product /> },
   {
     title: "ProductDetail",
-    path: "/productdetail",
+    path: "/productdetail/:id",
     element: <ProductDetail />,
   },
 
