@@ -19,7 +19,7 @@ function ProductList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/products")
+      .get("http://localhost:6543/api/v1/products")
       .then((response) => {
         setProducts(response.data);
       })
@@ -31,8 +31,12 @@ function ProductList() {
   // Hàm lọc sản phẩm dựa trên chuỗi tìm kiếm
   const filteredProducts = products.filter((product) => {
     return (
-      product.productName.toLowerCase().includes(searchText.toLowerCase()) ||
-      product.productCode.toLowerCase().includes(searchText.toLowerCase())
+      (product.productName &&
+        product.productName
+          .toLowerCase()
+          .includes(searchText?.toLowerCase())) ||
+      (product.productCode &&
+        product.productCode.toLowerCase().includes(searchText?.toLowerCase()))
     );
   });
 

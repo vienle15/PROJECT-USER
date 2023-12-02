@@ -7,7 +7,7 @@ function ProductDetail() {
   const [products, setProducts] = useState({});
   const { id } = useParams<{ id: string }>();
   useEffect(() => {
-    fetch("http://localhost:3000/products")
+    fetch("http://localhost:6543/api/v1/products")
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "data");

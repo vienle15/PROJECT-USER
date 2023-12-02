@@ -94,14 +94,14 @@ export default function Register() {
       };
       try {
         const response = await axios.post(
-          "http://localhost:3000/users",
+          "http://localhost:6543/api/v1/users",
           registrationData
         );
 
         navigate("/signin");
       } catch (error) {
         console.error("Lỗi ", error);
-        // Xử lý khi đăng ký thất bại, ví dụ hiển thị thông báo lỗi
+        
       }
     }
   };

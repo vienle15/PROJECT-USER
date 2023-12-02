@@ -16,7 +16,7 @@ function App() {
     const isLogged = localStorage.getItem("loggedIn");
     if (isLogged) {
       const userId = JSON.parse(isLogged);
-      const user = await axios.get("http://localhost:3000/users", {
+      const user = await axios.get("http://localhost:6543/api/v1/users", {
         params: { id: userId },
       });
       console.log(user);

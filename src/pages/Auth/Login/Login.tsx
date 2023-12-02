@@ -21,6 +21,7 @@ import {
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { userInfo } from "os";
+import { loginService } from "../../../services/auth.service";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
@@ -36,34 +37,18 @@ export default function SignIn() {
     event.preventDefault();
     const email = event.currentTarget.email.value;
     const password = event.currentTarget.password.value;
-    try {
-      // Gửi yêu cầu đăng nhập đến server và kiểm tra thông tin
-      const response = await axios.get("http://localhost:3000/users", {
-        params: {
-          email,
-          password,
-        },
-      });
 
-      if (response.data) {
-        // Đăng nhập thành công
+    loginService({ email, password })
+      .then((result) => {
         dispatch(loginSuccess({ email, password }));
-        // localStorage.setItem("userLogin", JSON.stringify());
-
-        localStorage.setItem("loggedIn", JSON.stringify(response.data[0].id));
-
         navigate("/");
-      } else {
-        // Đăng nhập thất bại
-        dispatch(loginFailure());
-        alert("Email hoặc mật khẩu không đúng. Vui lòng thử lại.");
-      }
-    } catch (error) {
-      // Xử lý lỗi khi gửi yêu cầu đăng nhập
-      console.error("Lỗi đăng nhập:", error);
-      dispatch(loginFailure());
-      alert("Đã xảy ra lỗi. Vui lòng thử lại sau.");
-    }
+      })
+      .catch((err) => {
+        console.log("1111Error:", err.message);
+        alert(err.message);
+
+        dispatch(loginFailure(err.message));
+      });
   };
 
   //
